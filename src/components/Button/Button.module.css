@@ -1,0 +1,16 @@
+.button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: blueviolet;
+  color: white;
+}
+
+.button:hover {
+  background-color: rgb(104, 32, 172);
+}
+
+.button:focus {
+  outline: 2px solid blueviolet;
+  outline-offset: 3px;
+}
