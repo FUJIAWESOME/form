@@ -5,6 +5,7 @@ interface ISelectProps {
   title: string;
   isDisabled?: boolean;
   options: string[];
+  value: string;
   onChange: (el: string) => void;
 }
 
@@ -13,10 +14,12 @@ const Select: React.FC<ISelectProps> = ({
   onChange,
   isDisabled = false,
   options,
+  value,
 }) => {
   return (
     <>
       <select
+        value={value}
         className={style.select}
         disabled={isDisabled}
         onChange={(e) => onChange(e.target.value)}

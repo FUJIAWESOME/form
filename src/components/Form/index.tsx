@@ -12,13 +12,15 @@ import { IFormData } from "../../interfaces";
 import Button from "../Button";
 import styles from "./Form.module.css";
 
+const initialState = {
+  country: "",
+  city: "",
+  universityType: "",
+  accommodationType: "",
+};
+
 const Form: React.FC = () => {
-  const [formData, setFormData] = useState<IFormData>({
-    country: "",
-    city: "",
-    universityType: "",
-    accommodationType: "",
-  });
+  const [formData, setFormData] = useState<IFormData>(initialState);
 
   const accommodationTypes =
     formData.country === COUNTRIES.RF
@@ -27,28 +29,34 @@ const Form: React.FC = () => {
 
   const handleCountryChange = (country: string) => {
     setFormData({
-      ...formData,
+      ...initialState,
       country,
     });
   };
 
   const handleCityChange = (city: string) => {
     setFormData({
-      ...formData,
+      ...initialState,
+      country: formData.country,
       city,
     });
   };
 
   const handleUniversityTypeChange = (universityType: string) => {
     setFormData({
-      ...formData,
+      ...initialState,
+      country: formData.country,
+      city: formData.city,
       universityType,
     });
   };
 
   const handleAccommodationTypeChange = (accommodationType: string) => {
     setFormData({
-      ...formData,
+      ...initialState,
+      country: formData.country,
+      city: formData.city,
+      universityType: formData.universityType,
       accommodationType,
     });
   };
@@ -63,6 +71,7 @@ const Form: React.FC = () => {
         title="Выберите страну"
         onChange={handleCountryChange}
         options={countriesOptions}
+        value={formData.country}
       />
 
       <Select
@@ -70,19 +79,23 @@ const Form: React.FC = () => {
         onChange={handleCityChange}
         isDisabled={!formData.country}
         options={countryCities[formData.country]}
+        value={formData.city}
       />
 
       <Select
         title="Выберите вид ВУЗа"
+        isDisabled={!formData.city}
         onChange={handleUniversityTypeChange}
         options={universityTypes}
+        value={formData.universityType}
       />
 
       <Select
         title="Выберите вариант проживания"
         onChange={handleAccommodationTypeChange}
-        isDisabled={!formData.city}
+        isDisabled={!formData.universityType}
         options={accommodationTypes}
+        value={formData.accommodationType}
       />
 
       <Button title="Отправить" isDisabled={isSubmitDisabled} />

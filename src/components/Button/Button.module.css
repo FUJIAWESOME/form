@@ -10,6 +10,10 @@
   background-color: rgb(104, 32, 172);
 }
 
+.button:disabled {
+  background-color: rgb(132, 116, 148);
+}
+
 .button:focus {
   outline: 2px solid blueviolet;
   outline-offset: 3px;
