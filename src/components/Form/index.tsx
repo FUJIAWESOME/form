@@ -43,10 +43,8 @@ const Form: React.FC = () => {
   };
 
   const handleUniversityTypeChange = (universityType: string) => {
-    const accommodation = universityType ? "" : formData.accommodationType;
     setFormData({
       ...formData,
-      accommodationType: accommodation,
       universityType,
     });
   };
