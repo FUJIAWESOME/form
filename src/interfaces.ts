@@ -1,10 +1,13 @@
-export interface ICountryCities {
-  [key: string]: string[];
+export interface IFormData {
+  sequenceNumber: number;
+  selectorName: string;
+  value: string;
+  isVisibleNext: boolean;
 }
 
-export interface IFormData {
-  country: string;
-  city: string;
-  universityType: string;
-  accommodationType: string;
+export interface IFormValue {
+  [key: string]: {
+    value: string;
+    isVisibleNext: boolean;
+  };
 }
